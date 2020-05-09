@@ -55,3 +55,5 @@ class Achat(models.Model):
     class Meta:
         ordering = ['date_Achat',]
 
+class test(models.Model):
+    date_Achat = models.DateTimeField(default=timezone.now())
