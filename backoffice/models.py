@@ -35,7 +35,7 @@ class Fournisseur(models.Model):
 """
 
 #####################
-#    Fournisseurs   #
+#    Fournisseurs  #
 #####################
 class Fournisseur(models.Model):
     libelle = models.CharField(max_length=50)
