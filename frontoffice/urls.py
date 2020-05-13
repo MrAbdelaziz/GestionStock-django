@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from frontoffice import views
+from django.conf.urls import url
+
+from frontoffice.views import LoginView
 
 urlpatterns = [
-    path('login/',views.login)
+    url(r'^$', LoginView.as_view())
 ]
