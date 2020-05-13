@@ -41,13 +41,14 @@
                         <div class="login-content">
                             <div class="login-logo">
                                 <a href="./">
-                                    <span class="h2 text-dark">Market</span>
+                                    <span class="h2 text-dark">Gestion de Stock</span>
                                 </a>
                             </div>
                             <div class="login-form">
                                 <form action="/" method="POST" id="checkLogin" >
                                     {% csrf_token %}
                                     <div class="form-group">
+
                                         <label>Useename </label>
                                         <input class="au-input au-input--full" type="text" id="email" name="username" placeholder="username">
                                     </div>
@@ -55,12 +56,22 @@
                                         <label>Mot de passe </label>
                                         <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Password">
                                     </div>
-                                    <div class="login-checkbox float-right">
+
+                                         <div class="login-checkbox float-left">
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                 <label>
+                                            <a href="#">{{ message }}</a>
+                                                 </label>
+                                            {% endfor %}
+                                        {% endif %}
+                                         </div>
+                                    <button id="connect" name="btn_submit" class="btn au-btn--block btn-outline-success" type="submit">Connexion</button>
+                                <!-- <div class="login-checkbox float-right">
                                         <label>
                                             <a href="#">Mot de passe oublié?</a>
                                         </label>
-                                    </div>
-                                    <button id="connect" name="btn_submit" class="btn au-btn--block btn-outline-success" type="submit">Connexion</button>
+                                    </div>-->
                                 </form> </div>
                         </div>
                     </div>
