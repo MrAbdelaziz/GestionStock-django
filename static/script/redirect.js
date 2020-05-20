@@ -2,7 +2,7 @@ function show(page) {
 	if (page == 'produit') {
 		$('a').removeClass('active');
 		$('a:contains(Produit)').addClass('active');
-		$("#main-content").load("page/produit.html");
+		$("#main-content").load("static/page/produit.html");
 		event.preventDefault();
 	}
 	if (page == 'salle') {
@@ -20,7 +20,7 @@ function show(page) {
 	if (page == "statistiques") {
 		$('a').removeClass('active');
 		$('a:contains(Statistiques)').addClass('active');
-		$("#main-content").load("page/statistiques.html");
+		$("#main-content").load("static/page/statistiques.html");
 		event.preventDefault();
 	}
 	if (page == "machine") {
@@ -38,4 +38,4 @@ function show(page) {
 }
 $('a').removeClass('active');
 $('a:contains(Statistiques)').addClass('active');
-$("#main-content").load("page/statistiques.html");
+$("#main-content").load("static/page/statistiques.html");

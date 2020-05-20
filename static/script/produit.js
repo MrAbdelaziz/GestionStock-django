@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     table = $('#tproduit').DataTable({
         ajax: {
-            url: "/backoffice/produits/",
+            url: "http://localhost:8000/backoffice/produits/",
             dataSrc: ''
         },
         columns: [
@@ -22,7 +22,7 @@ $(document).ready(function () {
                 data: "quantite"
             },
              {
-                data: "fournisseur"
+                data: "fournisseur.libelle"
             },
             {
                 "render": function () {

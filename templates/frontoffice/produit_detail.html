@@ -1,0 +1,15 @@
+{% extends 'frontoffice/produits.html' %}
+
+{% block content %}
+    <div class="produit">
+
+{#        <a class="btn btn-default" href="{% url 'produit_edit' pk=produit.pk %}"><span#}
+{#                class="glyphicon glyphicon-pencil"></span></a>#}
+        <h2>{{ produit.designation }}</h2>
+        <p>{{ produit.reference }}</p>
+        <p>{{ produit.prixU }}</p>
+        <p>{{ produit.quantite }}</p>
+        <p>{{ produit.fournisseur }}</p>
+
+    </div>
+{% endblock %}
