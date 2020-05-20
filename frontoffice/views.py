@@ -43,7 +43,13 @@ def post_new(request):
         if form.is_valid():
             produit = form.save()
             produit.save()
-            return redirect('produit_detail', pk=produit.pk)
+            return redirect('produits')
     else : 
         form = ProduitForm()
     return render(request, 'frontoffice/produit_form.html', {'form': form})
+
+
+def produit_all(request):
+    names_from_db = Produit.objects.all()
+    context_dict = {'produits_from_context': names_from_db}
+    return render(request, 'frontoffice/produit_all.html', context_dict)

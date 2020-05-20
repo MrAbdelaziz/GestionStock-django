@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^$', LoginView.as_view()),
     path('produit/add/', views.post_new, name='addProduit'),
     # path('post/<int:pk>/edit/', views.produit_edit, name='produit_edit'),
-    # path('produit/<int:pk>/', views.produit_detail, name='produit_detail'),
+     path('produits/', views.produit_all, name='produits'),
 
 ]

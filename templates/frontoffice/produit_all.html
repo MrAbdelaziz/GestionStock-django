@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <title> Produits</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h2>Les Produits</h2>
+       <h3>Add Produits </h3>
+    <button>Create</button>
+    {% if produits_from_context %}
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">reference</th>
+      <th scope="col">disingation</th>
+      <th scope="col">prixU</th>
+        <th scope="col">quantite</th>
+        <th scope="col">fournisseur</th>
+        <th scope="col">Supprimer</th>
+        <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for produit in produits_from_context %}
+    <tr>
+      <td>{{ produit.reference }}</td>
+      <td>{{ produit.designation }}</td>
+      <td>{{ produit.prixU }}</td>
+        <td>{{ produit.quantite }}</td>
+        <td>{{ produit.fournisseur }}</td>
+    <td><button>Delete</button></td>
+    <td><button>Update</button></td>
+    </tr>
+ {% endfor %}
+  </tbody>
+</table>
+    {% else %}
+        <h3>Please go to the admin and add a Name under 'MYAPP'</h3>
+    {% endif %}
+
+</body>
+</html>
