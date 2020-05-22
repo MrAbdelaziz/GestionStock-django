@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from  frontoffice import  *
+from frontoffice import  *
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import *

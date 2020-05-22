@@ -9,7 +9,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Client
-        fields = ('id','nom', 'prenom','email','telephone','adresse')
+        fields = ('id','nom', 'prenom','email','telephone','adresse','produits')
 class FournisseurSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Fournisseur

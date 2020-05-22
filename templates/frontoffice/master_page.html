@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="FR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}">
+    <link rel='stylesheet' href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}"
+          rel="stylesheet" media="all">
+    <link href="{% static 'vendor/datatable/dataTables.bootstrap4.min.css' %}"
+          rel="stylesheet" media="all">
+
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/theme.css' %}">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet"
+          media="all">
+
+    <link rel="stylesheet" href="{% static 'style/main.css' %}">
+
+    <script src="{% static 'vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/datatable/jquery.dataTables.min.js' %}"
+            type="text/javascript"></script>
+    <script src="{% static 'vendor/datatable/dataTables.bootstrap4.min.js' %}"
+            type="text/javascript"></script>
+    <script src="{% static 'vendor/chartjs/Chart.min.js' %}"></script>
+
+</head>
+<body>
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"> <i
+            class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand">
+                <a href="./" class="h2 pt-2">Market</a>
+                <div id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    <img class="img-responsive img-rounded" src="{% static 'img/no-photo.png' %}"
+                         alt="User picture">
+                </div>
+                <div class="user-info">
+						<span class="user-name"> <strong>NOM </strong>
+						</span> <span class="user-role">ROLE</span> <span class="user-status">
+							<i class="fa fa-circle"></i> <span>Online</span>
+						</span>
+                </div>
+            </div>
+            <!-- sidebar-header  -->
+
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="header-menu"><span>Gestion</span></li>
+                    <li><a href="./index.html" onclick="show('produit')"><i
+                            class="zmdi zmdi-hc-1x zmdi-group-work"></i>Produits</a></li>
+
+                    {#						<li><a href="./index.html" onclick="show('categorie')"><i#}
+                    {#								class="zmdi zmdi-hc-1x zmdi-group-work"></i>Categorie</a></li>#}
+                    {##}
+                    {#						<li><a href="./index.html" onclick="show('salle')"><i#}
+                    {#								class="zmdi zmdi-hc-1x zmdi-group-work"></i>Salle</a></li>#}
+                    {##}
+                    <li><a href="./index.html" onclick="show('statistiques')"><i
+                            class="zmdi zmdi-hc-1x zmdi-group-work"></i>Statistiques</a></li>
+
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+        <!-- sidebar-content  -->
+        <div class="sidebar-footer">
+            <a href="./logout.html"> <i class="fa fa-power-off"></i> <span>Déconnexion</span>
+            </a>
+        </div>
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+        <div class="container-fluid" id="main-content">
+
+        </div>
+
+    </main>
+    <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+<script src="{% static 'script/redirect.js' %}"></script>
+<script src="{% static 'vendor/slick/slick.min.js' %}"></script>
+<script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+<script src="{% static 'vendor/animsition/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+<script src="{% static 'vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'vendor/counter-up/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
+<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'vendor/chartjs/Chart.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'script/index.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -12,15 +12,7 @@ class Administrateur(models.Model):
     def __str__(self):
         return '{} {} {}'.format(self.nom, self.prenom, self.login)
 
-class Client(models.Model):
-    nom = models.CharField(max_length=50)
-    prenom = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
-    telephone = models.CharField(max_length=50)
-    adresse = models.CharField(max_length=50)
 
-    def __str__(self):
-        return '{} by {}'.format(self.nom, self.prenom)
 
 
 """
@@ -63,6 +55,16 @@ class Produit(models.Model):
     def __str__(self):
         return '{} by {}'.format(self.reference, self.designation)
 
+
+class Client(models.Model):
+    nom = models.CharField(max_length=50)
+    prenom = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    telephone = models.CharField(max_length=50)
+    adresse = models.CharField(max_length=50)
+    produits = models.ManyToManyField(Produit , through='Achat')
+    def __str__(self):
+        return '{} by {}'.format(self.nom, self.prenom)
 
 class Achat(models.Model):
     date_Achat = models.DateTimeField(default=timezone.now)

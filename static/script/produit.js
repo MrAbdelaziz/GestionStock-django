@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     table = $('#tproduit').DataTable({
         ajax: {
-            url: "http://localhost:8000/backoffice/produits/",
+            url: "produits/all",
             dataSrc: ''
         },
         columns: [
@@ -10,19 +10,16 @@ $(document).ready(function () {
                 data: "id"
             },
             {
-                data: "reference"
+                data: "code"
             },
             {
-                data: "designation"
+                data: "nom"
             },
             {
-                data: "prixU"
+                data: "dateAchat"
             },
             {
-                data: "quantite"
-            },
-             {
-                data: "fournisseur.libelle"
+                data: "prix"
             },
             {
                 "render": function () {

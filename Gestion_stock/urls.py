@@ -23,6 +23,9 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('backoffice/', include('backoffice.urls')),
     path('', include('frontoffice.urls')),
-    url(r'^admindash/$', TemplateView.as_view(template_name='frontoffice/adminDashboard.html')),
+
+    url(r'^admindash/$', TemplateView.as_view(template_name='frontoffice/master_page.html')),
+    url(r'^admindash/statistiques$', TemplateView.as_view(template_name='frontoffice/page/statistiques.html')),
+    url(r'^admindash/produits$', TemplateView.as_view(template_name='frontoffice/page/produit.html')),
 
 ]

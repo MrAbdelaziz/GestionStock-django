@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title> Produits</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-</head>
-<body>
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title> Produits</title>#}
+{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">#}
+{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">#}
+{#    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>#}
+{#</head>#}
+{#<body>#}
 {% extends 'frontoffice/adminDashboard.html' %}
 {% block content %}
-
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     {% if produits_from_context %}
         <div class="tab-content" style="position: absolute;width: 70%;left:20%;top: 10% ;bottom: 50%">
 
@@ -53,5 +53,5 @@
     </div>
     </div>
 {% endblock %}
-</body>
-</html>
+{#</body>#}
+{#</html>#}
