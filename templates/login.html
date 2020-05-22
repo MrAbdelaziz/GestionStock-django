@@ -1,109 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-         {% load static %}
-        <!-- Required meta tags-->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    {% load static %}
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Title Page-->
-        <title>Market - Login</title>
+    <!-- Title Page-->
+    <title>Market - Login</title>
 
-        <!-- Fontfaces CSS-->
-        <link href="{% static 'style/font-face.css'  %}" rel="stylesheet" >
-        <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css'  %} " rel="stylesheet" media="all">
-        <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'style/font-face.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %} " rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
 
-        <!-- Bootstrap CSS-->
-        <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
 
-        <!-- Vendor CSS-->
-        <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
-        <link href="{% static 'vendor/select2/select2.min.css' %} " rel="stylesheet" media="all">
-        <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet"
+          media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %} " rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
 
-        <!-- Main CSS-->
-        <link href=" {% static 'style/theme.css' %}" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href=" {% static 'style/theme.css' %}" rel="stylesheet" media="all">
 
-    </head>
+</head>
 
-    <body class="animsition">
-        <div class="page-wrapper">
-            <div class="page-content--bge5">
-                <div class="container">
-                    <div class="login-wrap">
-                        <div class="login-content">
-                            <div class="login-logo">
-                                <a href="./">
-                                    <span class="h2 text-dark">Gestion de Stock</span>
-                                </a>
+<body class="animsition">
+<div class="page-wrapper">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="./">
+                            <span class="h2 text-dark">Gestion de Stock</span>
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form action="/" method="POST" id="checkLogin">
+                            {% csrf_token %}
+                            <div class="form-group">
+
+                                <label>Useename </label>
+                                <input class="au-input au-input--full" type="text" id="email" name="username"
+                                       placeholder="username">
                             </div>
-                            <div class="login-form">
-                                <form action="/" method="POST" id="checkLogin" >
-                                    {% csrf_token %}
-                                    <div class="form-group">
+                            <div class="form-group">
+                                <label>Mot de passe </label>
+                                <input class="au-input au-input--full" type="password" id="password" name="password"
+                                       placeholder="Password">
+                            </div>
 
-                                        <label>Useename </label>
-                                        <input class="au-input au-input--full" type="text" id="email" name="username" placeholder="username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Mot de passe </label>
-                                        <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Password">
-                                    </div>
-
-                                         <div class="login-checkbox float-left">
-                                        {% if messages %}
-                                            {% for message in messages %}
-                                                 <label>
-                                            <a href="#">{{ message }}</a>
-                                                 </label>
-                                            {% endfor %}
-                                        {% endif %}
-                                         </div>
-                                    <button id="connect" name="btn_submit" class="btn au-btn--block btn-outline-success" type="submit">Connexion</button>
-                                <!-- <div class="login-checkbox float-right">
+                            <div class="login-checkbox float-left">
+                                {% if messages %}
+                                    {% for message in messages %}
                                         <label>
-                                            <a href="#">Mot de passe oublié?</a>
+                                            <a href="#">{{ message }}</a>
                                         </label>
-                                    </div>-->
-                                </form> </div>
-                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <button id="connect" name="btn_submit" class="btn au-btn--block btn-outline-success"
+                                    type="submit">Connexion
+                            </button>
+                            <!-- <div class="login-checkbox float-right">
+                                    <label>
+                                        <a href="#">Mot de passe oublié?</a>
+                                    </label>
+                                </div>-->
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
-        <!-- Jquery JS-->
-        <script src=" {% static 'vendor/jquery-3.2.1.min.js' %}"></script>
-        <!-- Bootstrap JS-->
-        <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
-        <script src=" {% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
-        <!-- Vendor JS       -->
-        <script src="{% static 'vendor/slick/slick.min.js' %}">
-        </script>
-        <script src=" {% static 'vendor/wow/wow.min.js' %}"></script>
-        <script src="{% static 'vendor/animsition/animsition.min.js' %}" > </script>
-        <script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
-        </script>
-        <script src=" {% static 'vendor/counter-up/jquery.waypoints.min.js' %} "></script>
-        <script src=" {% static 'vendor/counter-up/jquery.counterup.min.js' %} ">
-        </script>
-        <script src=" {% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
-        <script src=" {% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
-        <script src=" {% static 'vendor/chartjs/Chart.bundle.min.js' %} "></script>
-        <script src=" {% static 'vendor/select2/select2.min.js' %}"></script>
+</div>
+
+<!-- Jquery JS-->
+<script src=" {% static 'vendor/jquery-3.2.1.min.js' %}"></script>
+<!-- Bootstrap JS-->
+<script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
+<script src=" {% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+<!-- Vendor JS       -->
+<script src="{% static 'vendor/slick/slick.min.js' %}">
+</script>
+<script src=" {% static 'vendor/wow/wow.min.js' %}"></script>
+<script src="{% static 'vendor/animsition/animsition.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+</script>
+<script src=" {% static 'vendor/counter-up/jquery.waypoints.min.js' %} "></script>
+<script src=" {% static 'vendor/counter-up/jquery.counterup.min.js' %} ">
+</script>
+<script src=" {% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
+<script src=" {% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src=" {% static 'vendor/chartjs/Chart.bundle.min.js' %} "></script>
+<script src=" {% static 'vendor/select2/select2.min.js' %}"></script>
 
 
-        <!-- Main JS-->
-        <script src=" {% static 'js/main.js' %}"></script>
-        <script src=" {% static 'script/main.js' %} " type="text/javascript"></script>
-    </body>
+<!-- Main JS-->
+<script src=" {% static 'js/main.js' %}"></script>
+<script src=" {% static 'script/main.js' %} " type="text/javascript"></script>
+</body>
 
 </html>

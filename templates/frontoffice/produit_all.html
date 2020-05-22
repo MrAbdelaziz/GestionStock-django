@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-       <title> Produits</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title> Produits</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <h2>Les Produits</h2>
-       <h3>Add Produits </h3>
-    <button>Create</button>
+{% extends 'frontoffice/adminDashboard.html' %}
+{% block content %}
+
     {% if produits_from_context %}
-        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">reference</th>
-      <th scope="col">disingation</th>
-      <th scope="col">prixU</th>
-        <th scope="col">quantite</th>
-        <th scope="col">fournisseur</th>
-        <th scope="col">Supprimer</th>
-        <th scope="col">Update</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for produit in produits_from_context %}
-    <tr>
-      <td>{{ produit.reference }}</td>
-      <td>{{ produit.designation }}</td>
-      <td>{{ produit.prixU }}</td>
-        <td>{{ produit.quantite }}</td>
-        <td>{{ produit.fournisseur }}</td>
-    <td><button>Delete</button></td>
-    <td><button>Update</button></td>
-    </tr>
- {% endfor %}
-  </tbody>
-</table>
+        <div class="tab-content" style="position: absolute;width: 70%;left:20%;top: 10% ;bottom: 50%">
+
+
+         <h2>List of produit </h2>
+        <table class="table table-bordered table-condensed table-hover" >
+            <thead>
+            <tr>
+                <th scope="col">reference</th>
+                <th scope="col">disingation</th>
+                <th scope="col">prixU</th>
+                <th scope="col">quantite</th>
+                <th scope="col">fournisseur</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in produits_from_context %}
+                <tr>
+                    <td>{{ produit.reference }}</td>
+                    <td>{{ produit.designation }}</td>
+                    <td>{{ produit.prixU }}</td>
+                    <td>{{ produit.quantite }}</td>
+                    <td>{{ produit.fournisseur }}</td>
+                    <td><a title="view this user" class="btn btn-default btn-sm "> <i
+                            class="glyphicon glyphicon-eye-open text-primary"></i> </a>
+{#                        <a title="edit this user" class="btn btn-default btn-sm " href="{% url %}"> <i#}
+                                class="glyphicon glyphicon-edit text-primary"></i> </a>
+                        <a title="delete this user" class="btn btn-default btn-sm "> <i
+                                class="glyphicon glyphicon-trash text-danger"></i> </a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <h3>Please go to the admin and add a Name under 'MYAPP'</h3>
     {% endif %}
-
+    <div class="pull-right">
+        <a class="btn btn-default-btn-xs btn-success" href="{% url 'addProduit' %}"><i class="glyphicon glyphicon-plus"></i></a>
+    </div>
+    </div>
+{% endblock %}
 </body>
 </html>

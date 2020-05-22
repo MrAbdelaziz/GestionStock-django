@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
 {% load static %}
-
+<!
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,7 +67,7 @@
 					<ul>
 						<li class="header-menu"><span>Gestion</span></li>
 						<li>
-							<a href="./adminDashboard.html" onclick="show('produit')">
+							<a href="{%  url 'produits' %}">
 								<i class="zmdi zmdi-hc-1x zmdi-group-work"></i>Produits
 							</a>
 						</li>
@@ -112,16 +112,23 @@
 			</div>
 		</nav>
 		<!-- sidebar-wrapper  -->
-		<main class="page-content">
-		<div class="container-fluid" id="main-content">
+
+
+
+                    {% block content %}
+                    {% endblock %}
+
 
 		</div>
-
 		</main>
 		<!-- page-content" -->
-	</div>
+    	</div>
+
+
+</body>
+
 	<!-- page-wrapper
-	<!--<script src="{% static 'script/redirect.js' %}"></script>
+<script src="{% static 'script/redirect.js' %}"></script>
 	<script src="{% static 'vendor/slick/slick.min.js' %}">
 
 	</script>-->
@@ -142,5 +149,4 @@
 	</script>
 	<!--<script src="{% static 'script/index.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script> -->
-</body>
 </html>
