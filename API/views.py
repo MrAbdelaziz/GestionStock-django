@@ -18,7 +18,7 @@ class FournisseurViewSet(viewsets.ModelViewSet):
 class ProduitViewSet(viewsets.ModelViewSet):
     queryset = Produit.objects.all().order_by('reference')
     serializer_class = ProduitSerializer
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly] sss
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly] ss
     # def destroy(self, request, *args, **kwargs):
     #     instance = self.get_object()
     #     self.perform_destroy(instance)
