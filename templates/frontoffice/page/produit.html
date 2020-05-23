@@ -1,5 +1,5 @@
-<script src="script/produit.js" type="text/javascript"></script>
-
+{% load static %}
+<script src="{% static 'script/produit.js' %}" type="text/javascript"></script>
 <div class="container-fluid">
     <div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -24,14 +24,13 @@
         <div class="card-body container-fluid">
             <div class="row">
                 <div class="col-sm-6 mb-2">
-                    <label for="code">Code : </label>
+                    <label for="code">Reference : </label>
                     <input class="" type="text" id="id" hidden>
-                    <input class="form-control" type="text" id="code" required>
-
+                    <input class="form-control" type="text" id="reference" required>
                 </div>
                 <div class="col-sm-6 mb-2">
-                    <label for="nom">Nom : </label>
-                    <input class="form-control" type="text" id="nom" required>
+                    <label for="nom">designation : </label>
+                    <input class="form-control" type="text" id="designation" required>
                 </div>
             </div>
             <div class="row">
@@ -42,8 +41,16 @@
 
                 </div>
                 <div class="col-sm-6 mb-2">
-                    <label for="date">Date Achat : </label>
-                    <input class="form-control" type="date" id="date" required>
+                    <label for="date">quantite : </label>
+                    <input class="form-control" type="number" id="quantite" required>
+                </div>
+            </div>
+            <div class="row">
+             <div class="col-sm-6 mb-2">
+                    <label for="nom">fournisseur : </label>
+                    <select class="form-control" id="fournisseur">
+                        <option class="twichiya">Select fournisseur</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -56,10 +63,11 @@
                     <thead>
                         <tr class="text-uppercase bg-light  w-100">
                             <th scope="col">Id</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">DateAchat</th>
-                            <th scope="col">Prix</th>
+                            <th scope="col">reference</th>
+                            <th scope="col">designation</th>
+                            <th scope="col">prixU</th>
+                            <th scope="col">quantite</th>
+                            <th scope="col">fournisseur</th>
                             <th scope="col">Supprimer</th>
                             <th scope="col">Modifier</th>
                         </tr>

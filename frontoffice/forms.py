@@ -1,6 +1,6 @@
 from django import forms
 
-from backoffice.models import *
+from API.models import *
 
 
 class ProduitForm(forms.ModelForm):

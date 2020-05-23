@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib import messages
 from .forms import *
-from backoffice.models import  *
+from API.models import  *
 
 def login(requset):
     return render(requset, "login.html",)

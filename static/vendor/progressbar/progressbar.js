@@ -1726,17 +1726,17 @@ module.exports = Line;
 
 },{"./shape":7,"./utils":9}],4:[function(require,module,exports){
 module.exports = {
-    // Higher level backoffice, different shaped progress bars
+    // Higher level API, different shaped progress bars
     Line: require('./line'),
     Circle: require('./circle'),
     SemiCircle: require('./semicircle'),
     Square: require('./square'),
 
-    // Lower level backoffice to use any SVG path
+    // Lower level API to use any SVG path
     Path: require('./path'),
 
     // Base-class for creating new custom shapes
-    // to be in line with the backoffice of built-in shapes
+    // to be in line with the API of built-in shapes
     // Undocumented.
     Shape: require('./shape'),
 
@@ -1745,7 +1745,7 @@ module.exports = {
 };
 
 },{"./circle":2,"./line":3,"./path":5,"./semicircle":6,"./shape":7,"./square":8,"./utils":9}],5:[function(require,module,exports){
-// Lower level backoffice to animate any kind of svg path
+// Lower level API to animate any kind of svg path
 
 var Tweenable = require('shifty');
 var utils = require('./utils');
@@ -2248,7 +2248,7 @@ Shape.prototype._createTextContainer = function _createTextContainer(opts, conta
 // Give custom shapes possibility to modify text element
 Shape.prototype._initializeTextContainer = function(opts, container, element) {
     // By default, no-op
-    // Custom shapes should respect backoffice options, such as text.style
+    // Custom shapes should respect API options, such as text.style
 };
 
 Shape.prototype._pathString = function _pathString(opts) {
@@ -2290,7 +2290,7 @@ module.exports = Shape;
 
 },{"./path":5,"./utils":9}],8:[function(require,module,exports){
 // Square shaped progress bar
-// Note: Square is not core part of backoffice anymore. It's left here
+// Note: Square is not core part of API anymore. It's left here
 //       for reference. square is not included to the progressbar
 //       build anymore
 

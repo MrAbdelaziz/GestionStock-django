@@ -1,5 +1,9 @@
+from tkinter import CASCADE
+
 from django.db import models
 from django.utils import timezone
+import json
+
 from django.utils.formats import localize
 # Create your models here.
 
@@ -39,7 +43,8 @@ class Fournisseur(models.Model):
         ordering = ["libelle",]
 
     def __str__(self):
-        return '{} by {}'.format(self.libelle, self.email)
+        # return json.dumps(self.__dict__)
+         return '{} {} {} {}'.format(self.libelle, self.telephone, self.email, self.adresse)
 
 
 #####################
@@ -50,10 +55,10 @@ class Produit(models.Model):
     designation = models.CharField(max_length=50)
     prixU = models.DecimalField(max_digits=8, decimal_places=2)
     quantite = models.IntegerField()
-    fournisseur = models.ForeignKey(Fournisseur,on_delete=models.CASCADE)
-
+    # fournisseur = models.ForeignKey(Fournisseur,on_delete=models.CASCADE)
+    fournisseur = models.OneToOneField(Fournisseur,on_delete=models.CASCADE)
     def __str__(self):
-        return '{} by {}'.format(self.reference, self.designation)
+        return '{} {} {} {}'.format(self.reference, self.designation, self.quantite, self.fournisseur)
 
 
 class Client(models.Model):

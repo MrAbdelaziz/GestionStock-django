@@ -1,4 +1,4 @@
-# backoffice/urls.py
+# API/urls.py
 from django.urls import include, path
 from rest_framework import routers
 from . import views
@@ -9,8 +9,8 @@ router.register(r'fournisseurs', views.FournisseurViewSet)
 router.register(r'produits', views.ProduitViewSet)
 router.register(r'achats', views.AchatViewSet)
 router.register(r'users', views.UserViewSet)
-# Wire up our backoffice using automatic URL routing.
-# Additionally, we include login URLs for the browsable backoffice.
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

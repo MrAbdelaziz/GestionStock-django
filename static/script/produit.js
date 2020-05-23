@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     table = $('#tproduit').DataTable({
         ajax: {
-            url: "produits/all",
+            url: "../API/produits/?format=json",
             dataSrc: ''
         },
         columns: [
@@ -10,16 +10,20 @@ $(document).ready(function () {
                 data: "id"
             },
             {
-                data: "code"
+                data: "reference"
             },
             {
-                data: "nom"
+                data: "designation"
             },
             {
-                data: "dateAchat"
+                data: "prixU"
             },
             {
-                data: "prix"
+                data: "quantite"
+            },
+            {
+                //     url  -> four
+                data: "fournisseur"
             },
             {
                 "render": function () {
@@ -194,6 +198,26 @@ $(document).ready(function () {
             });
         });
 
+
+      $.ajax({
+			url: '../API/fournisseurs/?format=json',
+			type: 'GET',
+			dataType: 'json',
+			success: function (response) {
+
+				//alert(response);
+				var len = response.length;
+
+				$("#fournisseur").empty();
+				for (var i = 0; i < len; i++) {
+					var id = response[i]['id'];
+					var libelle = response[i]['libelle'];
+					//alert(id + "" + libelle);
+					$("#fournisseur").append("<option value='" + id + "'>" + libelle + "</option>");
+
+				}
+			}
+		    });
     // function remplir(data) {
     // var contenu = $('#table-content');
     // var ligne = "";

@@ -21,7 +21,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('backoffice/', include('backoffice.urls')),
+    path('API/', include('API.urls')),
     path('', include('frontoffice.urls')),
 
     url(r'^admindash/$', TemplateView.as_view(template_name='frontoffice/master_page.html')),
