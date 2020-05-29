@@ -37,16 +37,16 @@ class LogoutView(TemplateView):
 
     return render(request, self.template_name)
 
-def post_new(request):
-    if request.method == "POST":
-        form = ProduitForm(request.POST)
-        if form.is_valid():
-            produit = form.save()
-            produit.save()
-            return redirect('produits')
-    else : 
-        form = ProduitForm()
-    return render(request, 'frontoffice/produit_form.html', {'form': form})
+# def post_new(request):
+ #   if request.method == "POST":
+  #      form = ProduitForm(request.POST)
+   #     if form.is_valid():
+    #        produit = form.save()
+     #       produit.save()
+      #      return redirect('produits')
+    #else :
+     #   form = ProduitForm()
+    #return render(request, 'frontoffice/produit_form.html', {'form': form})
 
 
 def produit_all(request):

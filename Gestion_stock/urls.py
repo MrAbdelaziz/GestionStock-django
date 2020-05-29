@@ -16,11 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from django.urls import path,include
+from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('API/', include('API.urls')),
     path('', include('frontoffice.urls')),
 

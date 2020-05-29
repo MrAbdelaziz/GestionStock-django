@@ -55,8 +55,8 @@ class Produit(models.Model):
     designation = models.CharField(max_length=50)
     prixU = models.DecimalField(max_digits=8, decimal_places=2)
     quantite = models.IntegerField()
-    # fournisseur = models.ForeignKey(Fournisseur,on_delete=models.CASCADE)
-    fournisseur = models.OneToOneField(Fournisseur,on_delete=models.CASCADE)
+    fournisseur = models.ForeignKey(Fournisseur,on_delete=models.CASCADE)
+    # fournisseur = models.OneToOneField(Fournisseur,on_delete=models.CASCADE)
     def __str__(self):
         return '{} {} {} {}'.format(self.reference, self.designation, self.quantite, self.fournisseur)
 

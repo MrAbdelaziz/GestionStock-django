@@ -39,40 +39,43 @@ $(document).ready(function () {
     });
 
 
-    $('#btn').click(  
+    $('#btn').click(
         function () {
-            var code = $("#code"); // var code  = document.getElementById("code");
-            var nom = $("#nom");
+            var reference = $("#reference"); // var code  = document.getElementById("code");
+            var designation = $("#designation");
             var prix = $("#prix");
-            var dateAchat = $("#date");
-            
+            var quantite = $("#quantite");
+            var fournisseur = $("#fournisseur");
+
             if ($('#btn').text() == 'Ajouter') {
                 var p = {
-                    code: code.val(), //code.value
-                    nom: nom.val(),
-                    dateAchat: dateAchat.val(),
-                    prix: prix.val()
+                    reference: reference.val(), //code.value
+                    designation: designation.val(),
+                    prixU: prix.val(),
+                    quantite: quantite.val(),
+                    fournisseur: fournisseur.val(),
                 };
+                console.log(JSON.stringify(p));
 
                 $.ajax({
-                    url: 'produits/save',
+                    url: '../API/produits/',
                     contentType: "application/json",
                     dataType: "json",
                     data: JSON.stringify(p),
                     type: 'POST',
                     async: false,
                     success: function (data, textStatus,
-                        jqXHR) {
+                                       jqXHR) {
                         table.ajax.reload();
                     },
                     error: function (jqXHR, textStatus,
-                        errorThrown) {
-                        console.log(textStatus);
+                                     errorThrown) {
+                        console.log("erorr ");
                     }
                 });
-                
+
                 $("#main-content").load(
-                    "./page/produit.html");
+                    "../admindash/produits");
             }
         });
 
@@ -107,7 +110,7 @@ $(document).ready(function () {
                             e.preventDefault();
                             $
                                 .ajax({
-                                    url: 'produits/delete/'
+                                    url: '../API/produits/'
                                         + id,
                                     data: {},
                                     type: 'DELETE',
@@ -116,15 +119,10 @@ $(document).ready(function () {
                                         data,
                                         textStatus,
                                         jqXHR) {
-                                        if (data
-                                            .includes("error") == true) {
-                                            $(
-                                                "#error")
-                                                .modal();
-                                        } else {
+
                                             table.ajax
                                                 .reload();
-                                        }
+
                                     },
                                     error: function (
                                         jqXHR,
@@ -148,76 +146,82 @@ $(document).ready(function () {
             var id = $(this).closest('tr').find('td').eq(0)
                 .text();
             ;
-            var code = $(this).closest('tr').find('td').eq(
+            var reference = $(this).closest('tr').find('td').eq(
                 1).text();
-            var nom = $(this).closest('tr').find('td')
+            var designation = $(this).closest('tr').find('td')
                 .eq(2).text();
-            var prix = $(this).closest('tr').find('td').eq(
-                4).text();
-            var dateAchat = $(this).closest('tr')
-                .find('td').eq(3).text().replace(" ",
-                    "T");
+            var prix =parseInt( $(this).closest('tr').find('td')
+                .eq(2).text());
+            var quantite = $(this).closest('tr').find('td')
+                .eq(2).text();
+            var fournisseur = $(this).closest('tr').find('td')
+                .eq(2).text();
+
             btn.text('Modifier');
-            $("#code").val(code);
-            $("#nom").val(nom);
-            $("#id").val(id);
+            $("#reference").val(reference);
+            $("#designation").val(designation);
             $("#prix").val(prix);
-            $("#date").val(dateAchat);
+            $("#quantite").val(quantite);
+            $("#fournisseur").val(fournisseur);
             btn.click(function (e) {
                 e.preventDefault();
                 var p = {
                     id: $("#id").val(),
-                    code: $("#code").val(),
-                    nom: $("#nom").val(),
-                    dateAchat: $("#date").val(),
-                    prix: $("#prix").val()
+                    reference: $("#reference").val(),
+                    designation: $("#designation").val(),
+                    prixU: $("#prix").val(),
+                    quantite: $("#quantite").val(),
+                    fournisseur: $("#fournisseur").val()
                 };
                 if ($('#btn').text() == 'Modifier') {
                     $.ajax({
-                        url: 'produits/save',
+                        url: '../API/produits/',
                         contentType: "application/json",
                         dataType: "json",
                         data: JSON.stringify(p),
                         type: 'POST',
                         async: false,
                         success: function (data,
-                            textStatus, jqXHR) {
+                                           textStatus, jqXHR) {
                             table.ajax.reload();
-                            $("#code").val('');
-                            $("#nom").val('');
+                            $("#reference").val('');
+                            $("#designation").val('');
+                            $("#prix").val('');
+                            $("#quantite").val('');
+                            $("#fournisseur").val('');
                             btn.text('Ajouter');
                         },
                         error: function (jqXHR, textStatus,
-                            errorThrown) {
+                                         errorThrown) {
                             console.log(textStatus);
                         }
                     });
                     $("#main-content").load(
-                        "./page/produit.html");
+                        "../admindash/produits");
                 }
             });
         });
 
 
-      $.ajax({
-			url: '../API/fournisseurs/?format=json',
-			type: 'GET',
-			dataType: 'json',
-			success: function (response) {
+    $.ajax({
+        url: '../API/fournisseurs/?format=json',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
 
-				//alert(response);
-				var len = response.length;
+            //alert(response);
+            var len = response.length;
 
-				$("#fournisseur").empty();
-				for (var i = 0; i < len; i++) {
-					var id = response[i]['id'];
-					var libelle = response[i]['libelle'];
-					//alert(id + "" + libelle);
-					$("#fournisseur").append("<option value='" + id + "'>" + libelle + "</option>");
+            $("#fournisseur").empty();
+            for (var i = 0; i < len; i++) {
+                var id = response[i]['id'];
+                var libelle = response[i]['libelle'];
+                //alert(id + "" + libelle);
+                $("#fournisseur").append("<option value='" + id + "'>" + libelle + "</option>");
 
-				}
-			}
-		    });
+            }
+        }
+    });
     // function remplir(data) {
     // var contenu = $('#table-content');
     // var ligne = "";

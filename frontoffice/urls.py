@@ -23,8 +23,8 @@ from frontoffice.views import LoginView
 
 urlpatterns = [
     url(r'^$', LoginView.as_view()),
-    path('admindash/produit/add/', views.post_new, name='addProduit'),
+    #path('admindash/produit/add/', views.post_new, name='addProduit'),
     # path('post/<int:pk>/edit/', views.produit_edit, name='produit_edit'),
-     path('produits/', views.produit_all, name='produits'),
+     #path('produits/', views.produit_all, name='produits'),
 
 ]
