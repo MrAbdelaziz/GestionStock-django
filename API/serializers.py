@@ -18,14 +18,12 @@ class ProduitSerializer(serializers.ModelSerializer):
         fields = ('id' ,'reference', 'designation', 'prixU', 'quantite', 'fournisseur')
 
 class ClientSerializer(serializers.ModelSerializer):
-    produits = ProduitSerializer(many=True)
+    produits = ProduitSerializer(many=True,read_only=True)
     class Meta:
         model = Client
         fields = ('id','nom', 'prenom','email','telephone','adresse','produits')
 
 class AchatSerializer(serializers.ModelSerializer):
-    produit = ProduitSerializer(many=False)
-    client = ClientSerializer(many=False)
     class Meta:
         model = Achat
-        fields = ('date_Achat', 'quantite', 'client', 'produit')
+        fields = ('id','date_Achat', 'quantite', 'client', 'produit')

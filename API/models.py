@@ -67,7 +67,7 @@ class Client(models.Model):
     email = models.EmailField(max_length=50)
     telephone = models.CharField(max_length=50)
     adresse = models.CharField(max_length=50)
-    produits = models.ManyToManyField(Produit , through='Achat')
+    produits = models.ManyToManyField(Produit , through='Achat',blank=True)
     def __str__(self):
         return '{} by {}'.format(self.nom, self.prenom)
 

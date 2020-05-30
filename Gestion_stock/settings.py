@@ -73,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Gestion_stock.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 

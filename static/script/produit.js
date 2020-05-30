@@ -166,7 +166,7 @@ $(document).ready(function () {
             btn.click(function (e) {
                 e.preventDefault();
                 var p = {
-                    id: $("#id").val(),
+
                     reference: $("#reference").val(),
                     designation: $("#designation").val(),
                     prixU: $("#prix").val(),
@@ -175,11 +175,11 @@ $(document).ready(function () {
                 };
                 if ($('#btn').text() == 'Modifier') {
                     $.ajax({
-                        url: '../API/produits/',
+                        url: '../API/produits/'+id+'/',
                         contentType: "application/json",
                         dataType: "json",
                         data: JSON.stringify(p),
-                        type: 'POST',
+                        type: 'PUT',
                         async: false,
                         success: function (data,
                                            textStatus, jqXHR) {

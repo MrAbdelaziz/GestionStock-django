@@ -27,5 +27,8 @@ urlpatterns = [
     url(r'^admindash/$', TemplateView.as_view(template_name='frontoffice/master_page.html')),
     url(r'^admindash/statistiques$', TemplateView.as_view(template_name='frontoffice/page/statistiques.html')),
     url(r'^admindash/produits$', TemplateView.as_view(template_name='frontoffice/page/produit.html')),
+    url(r'^admindash/clients$', TemplateView.as_view(template_name='frontoffice/page/client.html')),
+    url(r'^admindash/fournisseurs$', TemplateView.as_view(template_name='frontoffice/page/fournisseur.html')),
+    url(r'^admindash/achats$', TemplateView.as_view(template_name='frontoffice/page/achat.html')),
 
 ]

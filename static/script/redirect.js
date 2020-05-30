@@ -5,16 +5,23 @@ function show(page) {
 		$("#main-content").load("produits");
 		event.preventDefault();
 	}
-	if (page == 'salle') {
+	if (page == 'client') {
+		console.log('active')
 		$('a').removeClass('active');
-		$('a:contains(Salle)').addClass('active');
-		$("#main-content").load("page/salle.html");
+		$('a:contains(Clients)').addClass('active');
+		$("#main-content").load("clients");
 		event.preventDefault();
 	}
-	if (page == 'categorie') {
+	if (page == 'fournisseur') {
 		$('a').removeClass('active');
-		$('a:contains(Categorie)').addClass('active');
-		$("#main-content").load("page/categorie.html");
+		$('a:contains(Fournisseurs)').addClass('active');
+		$("#main-content").load("fournisseurs");
+		event.preventDefault();
+	}
+		if (page == 'achat') {
+		$('a').removeClass('active');
+		$('a:contains(Achats)').addClass('active');
+		$("#main-content").load("achats");
 		event.preventDefault();
 	}
 	if (page == "statistiques") {
