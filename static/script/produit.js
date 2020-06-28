@@ -39,6 +39,56 @@ $(document).ready(function () {
     });
 
 
+$('#btnref').click(function () {
+    table.ajax.reload();
+});
+
+
+
+      $('#btnrisk').click(function () {
+            var risk = $("#risk");
+              $('#tproduit').dataTable().fnDestroy();
+
+              table2 = $('#tproduit').DataTable({
+        ajax: {
+            url: "../API/produits/?format=json&quantite__gte="+risk.val(),
+            dataSrc: ''
+        },
+        columns: [
+            {
+                data: "id"
+            },
+            {
+                data: "reference"
+            },
+            {
+                data: "designation"
+            },
+            {
+                data: "prixU"
+            },
+            {
+                data: "quantite"
+            },
+            {
+                //     url  -> four
+                data: "fournisseur"
+            },
+            {
+                "render": function () {
+                    return '<button type="button" class="btn btn-outline-danger supprimer">Supprimer</button>';
+                }
+            },
+            {
+                "render": function () {
+                    return '<button type="button" class="btn btn-outline-secondary modifier">Modifier</button>';
+                }
+            }]
+
+    });
+            table2.ajax.reload();
+        });
+
     $('#btn').click(
         function () {
             var reference = $("#reference"); // var code  = document.getElementById("code");
@@ -151,11 +201,11 @@ $(document).ready(function () {
             var designation = $(this).closest('tr').find('td')
                 .eq(2).text();
             var prix =parseInt( $(this).closest('tr').find('td')
-                .eq(2).text());
+                .eq(3).text());
             var quantite = $(this).closest('tr').find('td')
-                .eq(2).text();
+                .eq(4).text();
             var fournisseur = $(this).closest('tr').find('td')
-                .eq(2).text();
+                .eq(5).text();
 
             btn.text('Modifier');
             $("#reference").val(reference);
