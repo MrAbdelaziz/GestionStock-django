@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from django.shortcuts import render
 from rest_framework import viewsets, generics, status
 from rest_framework import permissions
@@ -61,3 +62,11 @@ class RiskViewSet(APIView):
         prods = Produit.objects.filter(quantite__gt=0)
         return Response(prods)
 
+class LoginnViewSet(APIView):
+    def get(self, request, format=None):
+            username = request.GET.get('username', False)
+            password = request.GET.get('password', False)
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_active:
+                return Response(user)
+            return Response(user)

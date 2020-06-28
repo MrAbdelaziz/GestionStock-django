@@ -17,5 +17,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     #path('clients/<int:pk>/', views.ClientDetail.as_view())
     url(r'^prod/count/$', views.CountViewSet.as_view(), name='produits-count'),
-    url(r'^risk/$', views.RiskViewSet.as_view(), name='risk')
+    url(r'^risk/$', views.RiskViewSet.as_view(), name='risk'),
     ]
