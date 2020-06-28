@@ -11,8 +11,8 @@
                 <div class="row">
                     <a href="./index.html?p=employe" class="col-md-6 col-lg-3">
                         <div class="statistic__item statistic__item--green">
-                            <h2 class="number" id="nbr-salle">0</h2>
-                            <span class="desc">Salle</span>
+                            <span class="desc">Produits</span>
+                            <h2 class="number" id="nbr-produits"></h2>
                             <div class="icon">
                                 <i class="zmdi zmdi-accounts"></i>
                             </div>
@@ -21,8 +21,8 @@
                     <a href="./index.html?p=departement" class="col-md-6 col-lg-3">
 
                         <div class="statistic__item statistic__item--orange">
-                            <h2 class="number">20</h2>
-                            <span class="desc">départements</span>
+                            <span class="desc">Clients</span>
+                            <h2 class="number" id="nbr-clients"></h2>
                             <div class="icon">
                                 <i class="zmdi zmdi-group-work"></i>
                             </div>
@@ -30,8 +30,8 @@
                     </a>
                     <a href="./index.html?p=pointage" class="col-md-6 col-lg-3">
                         <div class="statistic__item statistic__item--blue">
-                            <h2 class="number">23</h2>
-                            <span class="desc">projets</span>
+                            <span class="desc">Fournisseurs</span>
+                            <h2 class="number" id="nbr-fournisseur"></h2>
                             <div class="icon">
                                 <i class="zmdi zmdi-check"></i>
                             </div>
@@ -39,8 +39,8 @@
                     </a>
                     <a href="./index.html?p=fonction" class="col-md-6 col-lg-3">
                         <div class="statistic__item statistic__item--red">
-                            <h2 class="number">700</h2>
-                            <span class="desc">produits</span>
+                            <span class="desc">Achats</span>
+                            <h2 class="number" id="nbr-achat"></h2>
                             <div class="icon">
                                 <i class="zmdi zmdi-settings"></i>
                             </div>
@@ -52,4 +52,5 @@
         </section>
     </div>
 </div>
-<script src="script/statistique.js" type="text/javascript"></script>
+{% load static %}
+<script src="{% static 'script/statistiques.js' %}"  type="text/javascript"></script>

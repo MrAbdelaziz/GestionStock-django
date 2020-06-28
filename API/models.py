@@ -2,6 +2,7 @@ from tkinter import CASCADE
 
 from django.db import models
 from django.utils import timezone
+
 import json
 
 from django.utils.formats import localize
@@ -72,7 +73,7 @@ class Client(models.Model):
         return '{} by {}'.format(self.nom, self.prenom)
 
 class Achat(models.Model):
-    date_Achat = models.DateTimeField(default=timezone.now)
+    date_Achat = models.DateField(default=timezone.now)
     quantite = models.IntegerField()
     client = models.ForeignKey(Client,on_delete=models.CASCADE)
     produit = models.ForeignKey(Produit,on_delete=models.CASCADE)

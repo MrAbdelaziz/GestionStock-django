@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -39,8 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'API',
     'frontoffice',
-    'rest_framework'
+    'rest_framework',
+    'django_filters'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +141,6 @@ LOGIN_URL = '/'
 TEMPLATE_DIRS = (
     BASE_DIR + '/templates/',
 )
+
+
+

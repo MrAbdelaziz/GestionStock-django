@@ -90,7 +90,7 @@ $(document).ready(function () {
         $('.confirmer').click(function (e) {
             e.preventDefault();
             $.ajax({
-                url: '../API/fournisseurs/' + id,
+                url: '../API/achats/' + id,
                 data: {},
                 type: 'DELETE',
                 async: false,
@@ -123,30 +123,39 @@ $(document).ready(function () {
 
             var btn = $('#btn');
 
+
+
             var id = $(this).closest('tr').find('td').eq(0).text();
-            var libelle = $(this).closest('tr').find('td').eq(1).text();
-            var email = $(this).closest('tr').find('td').eq(2).text();
-            var tel = $(this).closest('tr').find('td').eq(3).text();
-            var adresse = $(this).closest('tr').find('td').eq(4).text();
+            var da = $(this).closest('tr').find('td').eq(1).text();
+            var quan = $(this).closest('tr').find('td').eq(2).text();
+            var client = $(this).closest('tr').find('td').eq(3).text();
+            var prod = $(this).closest('tr').find('td').eq(4).text();
+
             btn.text('Modifier');
-            $("#libelle").val(libelle);
+            $("#datea").val(da);
             $("#id").val(id);
-            $("#email").val(email);
-            $("#tel").val(tel);
-            $("#addresse").val(adresse);
+            $("#quantite").val(quan);
+            $("#client").val(client);
+            $("#sproduit").val(prod);
 
             btn.click(function (e) {
                 e.preventDefault();
-                var s = {
-                    libelle: $("#libelle").val(),
-                    telephone: $("#tel").val(),
-                    email: $("#email").val(),
-                    adresse: $("#addresse").val(),
 
+                 var date = $("#datea");
+                var qte = $("#quantite");
+                var produit = $("#sproduit");
+                var client = $("#client");
+                    var s = {
+                    date_Achat: date.val(),
+                    quantite: qte.val(),
+                    client :client.val(),
+                    produit :produit.val(),
                 };
+
+
                 if ($('#btn').text() == 'Modifier') {
                     $.ajax({
-                        url: '../API/fournisseurs/' + id + '/',
+                        url: '../API/achats/' + id + '/',
                         contentType: "application/json",
                         dataType: "json",
                         data: JSON.stringify(s),

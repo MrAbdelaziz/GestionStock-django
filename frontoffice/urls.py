@@ -26,5 +26,5 @@ urlpatterns = [
     #path('admindash/produit/add/', views.post_new, name='addProduit'),
     # path('post/<int:pk>/edit/', views.produit_edit, name='produit_edit'),
      #path('produits/', views.produit_all, name='produits'),
-
+    #path('admindash/',views.counts_all)
 ]

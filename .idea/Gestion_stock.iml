@@ -14,17 +14,14 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/env" />
+      <excludeFolder url="file://$MODULE_DIR$/env2" />
       <excludeFolder url="file://$MODULE_DIR$/ma.emsi.ecommerce" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (GestionStock-django)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/../Gestion_stock\templates" />
-      </list>
-    </option>
   </component>
 </module>

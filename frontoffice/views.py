@@ -53,3 +53,8 @@ def produit_all(request):
     names_from_db = Produit.objects.all()
     context_dict = {'produits_from_context': names_from_db}
     return render(request, 'frontoffice/produit_all.html', context_dict)
+
+
+def counts_all(request):
+    produits = Produit.objects.all().count()
+    return render(request, 'frontoffice/master_page.html', {'produits': produits})
