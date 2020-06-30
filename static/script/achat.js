@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     table = $('#tachat').DataTable({
         ajax: {
-            url: "../API/achats/",
+            url: "../API/achats",
             dataSrc: ''
         },
         columns: [
@@ -63,6 +63,53 @@ $(document).ready(function () {
                 }
 
             });
+              var p = {
+
+                    reference: "ee",
+                    designation: "ee",
+                    prixU: 0,
+                    quantite: 0,
+                    fournisseur: 0
+                };
+            $.ajax({
+                url: '../API/produits/'+s.produit,
+                contentType: "application/json",
+                type: 'GET',
+                success: function (data) {
+                    p=JSON.parse(JSON.stringify(data));
+                    console.log("get data : "+p.reference );
+                    if (p.quantite !==0){
+                        p.quantite = p.quantite-s.quantite;
+                                 console.log(p);
+
+                         $.ajax({
+                        url: '../API/produits/'+s.produit+'/',
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify(p),
+                        type: 'PUT',
+                        async: false,
+                        success: function (data,
+                                           textStatus, jqXHR) {
+ console.log("mise a jour" );
+                        },
+                        error: function (jqXHR, textStatus,
+                                         errorThrown) {
+                            console.log(textStatus);
+                        }
+                    });
+
+                    }
+
+                },
+                error: function (textStatus) {
+                    console.log(textStatus);
+                }
+
+            });
+
+
+
         }
     });
 
