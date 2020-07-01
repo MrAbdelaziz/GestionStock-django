@@ -38,3 +38,8 @@ Purchases
 REST API
 :-------------------------:|
 <img align="left" height="350" width="845" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/RESTAPI.png"> |
+
+
+## social media :
+iG: https://www.instagram.com/_.abdelaziz._/
+linkedin: https://www.linkedin.com/in/abdelazizelouahab/
