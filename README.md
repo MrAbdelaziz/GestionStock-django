@@ -19,6 +19,10 @@ Clients           |Suppliers           |Purchases
 <img align="left" height="350" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/clients.png">|<img align="center" height="350" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/SUPPLIERS.png">|<img align="center" height="350" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/purchases.png">
 
 
+Login
+:-------------------------:|
+<img align="left" height="350" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/login.png"> |
+
 REST API
 :-------------------------:|
 <img align="left" height="350" src="https://github.com/MrAbdelaziz/GestionStock-django/blob/master/ScreenShots/RESTAPI.png"> |
