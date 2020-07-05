@@ -5,7 +5,7 @@ Développement d'une application de gestion de stock en utilisant Django
 - Django
 - Django REST framework 
 - MySQL
-
+- AJAX
 ## API
 - http://localhost:8000/API/
 
