@@ -1,3 +1,23 @@
+MyTools = {
+    Validation: function () {
+        var inputs = ["libelle", "email", "tel", "addresse"];
+        var checked = true;
+
+        inputs.forEach(function (input) {
+            var element = $("#" + input);
+            if (element.val() == null || element.val() == "") {
+                alert(input + " is empty");
+                checked = false;
+
+            }
+
+        });
+        return checked;
+    }
+}
+
+
+
 $(document).ready(function () {
 
     table = $('#tfourni').DataTable({
@@ -42,7 +62,7 @@ $(document).ready(function () {
         var adresse = $("#addresse");
 
         if ($('#btn').text() == 'Ajouter') {
-
+            if(MyTools.Validation()){
             var s = {
                 libelle: libelle.val(),
                 email: email.val(),
@@ -63,6 +83,7 @@ $(document).ready(function () {
                 }
 
             });
+        }
         }
     });
 
@@ -145,6 +166,7 @@ $(document).ready(function () {
 
                 };
                 if ($('#btn').text() == 'Modifier') {
+                    if(MyTools.Validation()){
                     $.ajax({
                         url: '../API/fournisseurs/' + id + '/',
                         contentType: "application/json",
@@ -166,7 +188,10 @@ $(document).ready(function () {
                     $("#main-content").load(
                         "fournisseurs");
                 }
+                }
+
             });
+
         });
 
 });

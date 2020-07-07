@@ -52,8 +52,19 @@ $(document).ready(function () {
                 "render": function () {
                     return '<button type="button" class="btn btn-outline-secondary modifier">Modifier</button>';
                 }
-            }]
+            }],
+        'rowCallback': function (row, data, index) {
+            if ($(row).find('td:eq(4)').text() == 0) {
+                $(row).find('td:eq(4)').css('color', 'red');
+            } else {
+                if ($(row).find('td:eq(4)').text() > 1 && $(row).find('td:eq(4)').text() < 10) {
+                    $(row).find('td:eq(4)').css('color', 'orange');
+                }else{
+                    $(row).find('td:eq(4)').css('color', 'green');
+                }
 
+            }
+        }
     });
 
 
@@ -109,14 +120,14 @@ $(document).ready(function () {
     $('#btn').click(
         function () {
 
-                var reference = $("#reference"); // var code  = document.getElementById("code");
-                var designation = $("#designation");
-                var prix = $("#prix");
-                var quantite = $("#quantite");
-                var fournisseur = $("#fournisseur");
+            var reference = $("#reference"); // var code  = document.getElementById("code");
+            var designation = $("#designation");
+            var prix = $("#prix");
+            var quantite = $("#quantite");
+            var fournisseur = $("#fournisseur");
 
-                if ($('#btn').text() == 'Ajouter') {
-                    if (MyTools.Validation()) {
+            if ($('#btn').text() == 'Ajouter') {
+                if (MyTools.Validation()) {
                     var p = {
                         reference: reference.val(), //code.value
                         designation: designation.val(),
@@ -146,7 +157,7 @@ $(document).ready(function () {
                     $("#main-content").load(
                         "../admindash/produits");
                 }
-                }
+            }
 
         });
 

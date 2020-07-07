@@ -1,3 +1,20 @@
+MyTools = {
+    Validation: function () {
+        var inputs = ["nom", "prenom", "email", "tel", "addresse"];
+        var checked = true;
+
+        inputs.forEach(function (input) {
+            var element = $("#" + input);
+            if (element.val() == null || element.val() == "") {
+                alert(input + " is empty");
+                checked = false;
+
+            }
+
+        });
+        return checked;
+    }
+}
 $(document).ready(function () {
 
     table = $('#tclient').DataTable({
@@ -46,16 +63,16 @@ $(document).ready(function () {
         var adresse = $("#addresse");
 
         if ($('#btn').text() == 'Ajouter') {
+            if (MyTools.Validation()){
+                var s = {
+                    nom: nom.val(),
+                    prenom: prenom.val(),
+                    email: email.val(),
+                    telephone: tel.val(),
+                    adresse: adresse.val(),
+                    produits: [],
 
-            var s = {
-                nom: nom.val(),
-                prenom: prenom.val(),
-                email: email.val(),
-                telephone: tel.val(),
-                adresse: adresse.val(),
-                produits: [],
-
-            };
+                };
 
             $.ajax({
                 url: '../API/clients/',
@@ -71,6 +88,8 @@ $(document).ready(function () {
 
             });
         }
+        }
+
     });
 
     $('#table-content').on('click', '.supprimer', function () {
@@ -146,16 +165,17 @@ $(document).ready(function () {
 
             btn.click(function (e) {
                 e.preventDefault();
+if (MyTools.Validation()){
                 var s = {
                     nom: $("#nom").val(),
                     prenom: $("#prenom").val(),
                     email: $("#email").val(),
                     adresse: $("#addresse").val(),
-                    telephone	: $("#tel").val(),
+                    telephone: $("#tel").val(),
                 };
                 if ($('#btn').text() == 'Modifier') {
                     $.ajax({
-                        url: '../API/clients/' + id+'/',
+                        url: '../API/clients/' + id + '/',
                         contentType: "application/json",
                         dataType: "json",
                         data: JSON.stringify(s),
@@ -175,6 +195,7 @@ $(document).ready(function () {
                     $("#main-content").load(
                         "clients");
                 }
+            }
             });
         });
 

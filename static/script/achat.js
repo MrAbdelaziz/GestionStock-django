@@ -1,3 +1,22 @@
+MyTools = {
+    Validation: function () {
+        var inputs = ["datea", "quantite", "sproduit", "client"];
+        var checked = true;
+
+        inputs.forEach(function (input) {
+            var element = $("#" + input);
+            if (element.val() == null || element.val() == "") {
+                alert(input + " is empty");
+                checked = false;
+
+            }
+
+        });
+        return checked;
+    }
+}
+
+
 $(document).ready(function () {
 
     table = $('#tachat').DataTable({
@@ -42,81 +61,78 @@ $(document).ready(function () {
         var client = $("#client");
 
         if ($('#btn').text() == 'Ajouter') {
+            if (MyTools.Validation()) {
+                var s = {
+                    date_Achat: date.val(),
+                    quantite: qte.val(),
+                    client: client.val(),
+                    produit: produit.val(),
+                };
 
-            var s = {
-                date_Achat: date.val(),
-                quantite: qte.val(),
-                client :client.val(),
-                produit :produit.val(),
-            };
-
-      var p = {     reference: "ee",
+                var p = {
+                    reference: "ee",
                     designation: "ee",
                     prixU: 0,
                     quantite: 0,
                     fournisseur: 0
                 };
-             $.ajax({
-                url: '../API/produits/'+s.produit,
-                contentType: "application/json",
-                type: 'GET',
-                success: function (data) {
-                    p=JSON.parse(JSON.stringify(data));
-                    console.log("get data : "+p.reference );
+                $.ajax({
+                    url: '../API/produits/' + s.produit,
+                    contentType: "application/json",
+                    type: 'GET',
+                    success: function (data) {
+                        p = JSON.parse(JSON.stringify(data));
+                        console.log("get data : " + p.reference);
 
-                    if(p.quantite>=s.quantite){
-                        $.ajax({
-                url: '../API/achats/',
-                contentType: "application/json",
-                data: JSON.stringify(s),
-                type: 'POST',
-                success: function (data) {
-                    table.ajax.reload();
-                },
-                error: function (textStatus) {
-                    console.log(textStatus);
-                }
+                        if (p.quantite >= s.quantite) {
+                            $.ajax({
+                                url: '../API/achats/',
+                                contentType: "application/json",
+                                data: JSON.stringify(s),
+                                type: 'POST',
+                                success: function (data) {
+                                    table.ajax.reload();
+                                },
+                                error: function (textStatus) {
+                                    console.log(textStatus);
+                                }
 
-            });
-                    if (p.quantite !==0){
-                        p.quantite = p.quantite-s.quantite;
-                                 console.log(p);
+                            });
+                            if (p.quantite !== 0) {
+                                p.quantite = p.quantite - s.quantite;
+                                console.log(p);
 
-                         $.ajax({
-                        url: '../API/produits/'+s.produit+'/',
-                        contentType: "application/json",
-                        dataType: "json",
-                        data: JSON.stringify(p),
-                        type: 'PUT',
-                        async: false,
-                        success: function (data,
-                                           textStatus, jqXHR) {
- console.log("mise a jour" );
-                        },
-                        error: function (jqXHR, textStatus,
-                                         errorThrown) {
-                            console.log(textStatus);
+                                $.ajax({
+                                    url: '../API/produits/' + s.produit + '/',
+                                    contentType: "application/json",
+                                    dataType: "json",
+                                    data: JSON.stringify(p),
+                                    type: 'PUT',
+                                    async: false,
+                                    success: function (data,
+                                                       textStatus, jqXHR) {
+                                        console.log("mise a jour");
+                                    },
+                                    error: function (jqXHR, textStatus,
+                                                     errorThrown) {
+                                        console.log(textStatus);
+                                    }
+                                });
+
+                            }
+                        } else {
+                            alert('la quantité demandée depasse la quantité de stock');
                         }
-                    });
 
+                    },
+                    error: function (textStatus) {
+                        console.log(textStatus);
                     }
-                    }else{
-                        alert('la quantité demandée depasse la quantité de stock');
-                    }
 
-                },
-                error: function (textStatus) {
-                    console.log(textStatus);
-                }
-
-            });
+                });
 
 
-
-
-
-
-
+            }
         }
     });
 
@@ -178,7 +194,6 @@ $(document).ready(function () {
             var btn = $('#btn');
 
 
-
             var id = $(this).closest('tr').find('td').eq(0).text();
             var da = $(this).closest('tr').find('td').eq(1).text();
             var quan = $(this).closest('tr').find('td').eq(2).text();
@@ -195,39 +210,41 @@ $(document).ready(function () {
             btn.click(function (e) {
                 e.preventDefault();
 
-                 var date = $("#datea");
+                var date = $("#datea");
                 var qte = $("#quantite");
                 var produit = $("#sproduit");
                 var client = $("#client");
-                    var s = {
+                var s = {
                     date_Achat: date.val(),
                     quantite: qte.val(),
-                    client :client.val(),
-                    produit :produit.val(),
+                    client: client.val(),
+                    produit: produit.val(),
                 };
 
 
                 if ($('#btn').text() == 'Modifier') {
-                    $.ajax({
-                        url: '../API/achats/' + id + '/',
-                        contentType: "application/json",
-                        dataType: "json",
-                        data: JSON.stringify(s),
-                        type: 'PUT',
-                        async: false,
-                        success: function (data,
-                                           textStatus, jqXHR) {
-                            table.ajax.reload();
+                    if (MyTools.Validation()) {
+                        $.ajax({
+                            url: '../API/achats/' + id + '/',
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: JSON.stringify(s),
+                            type: 'PUT',
+                            async: false,
+                            success: function (data,
+                                               textStatus, jqXHR) {
+                                table.ajax.reload();
 
-                            btn.text('Ajouter');
-                        },
-                        error: function (jqXHR, textStatus,
-                                         errorThrown) {
-                            console.log(textStatus);
-                        }
-                    });
-                    $("#main-content").load(
-                        "achats");
+                                btn.text('Ajouter');
+                            },
+                            error: function (jqXHR, textStatus,
+                                             errorThrown) {
+                                console.log(textStatus);
+                            }
+                        });
+                        $("#main-content").load(
+                            "achats");
+                    }
                 }
             });
         });
@@ -247,7 +264,7 @@ $(document).ready(function () {
                 var prenom = response[i]['prenom'];
                 var nom = response[i]['nom'];
                 //alert(id + "" + libelle);
-                $("#client").append("<option value='" + id + "'>" + nom+ " "+prenom+"</option>");
+                $("#client").append("<option value='" + id + "'>" + nom + " " + prenom + "</option>");
 
             }
         }
@@ -273,7 +290,6 @@ $(document).ready(function () {
             }
         }
     });
-
 
 
 });
