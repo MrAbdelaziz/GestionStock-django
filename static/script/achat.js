@@ -50,7 +50,22 @@ $(document).ready(function () {
                 produit :produit.val(),
             };
 
-            $.ajax({
+      var p = {     reference: "ee",
+                    designation: "ee",
+                    prixU: 0,
+                    quantite: 0,
+                    fournisseur: 0
+                };
+             $.ajax({
+                url: '../API/produits/'+s.produit,
+                contentType: "application/json",
+                type: 'GET',
+                success: function (data) {
+                    p=JSON.parse(JSON.stringify(data));
+                    console.log("get data : "+p.reference );
+
+                    if(p.quantite>=s.quantite){
+                        $.ajax({
                 url: '../API/achats/',
                 contentType: "application/json",
                 data: JSON.stringify(s),
@@ -63,21 +78,6 @@ $(document).ready(function () {
                 }
 
             });
-              var p = {
-
-                    reference: "ee",
-                    designation: "ee",
-                    prixU: 0,
-                    quantite: 0,
-                    fournisseur: 0
-                };
-            $.ajax({
-                url: '../API/produits/'+s.produit,
-                contentType: "application/json",
-                type: 'GET',
-                success: function (data) {
-                    p=JSON.parse(JSON.stringify(data));
-                    console.log("get data : "+p.reference );
                     if (p.quantite !==0){
                         p.quantite = p.quantite-s.quantite;
                                  console.log(p);
@@ -100,6 +100,9 @@ $(document).ready(function () {
                     });
 
                     }
+                    }else{
+                        alert('la quantité demandée depasse la quantité de stock');
+                    }
 
                 },
                 error: function (textStatus) {
@@ -107,6 +110,10 @@ $(document).ready(function () {
                 }
 
             });
+
+
+
+
 
 
 
@@ -224,6 +231,7 @@ $(document).ready(function () {
                 }
             });
         });
+
     $.ajax({
         url: '../API/clients/?format=json',
         type: 'GET',
@@ -243,8 +251,10 @@ $(document).ready(function () {
 
             }
         }
-    });$.ajax({
-        url: '../API/produits/?format=json',
+    });
+
+    $.ajax({
+        url: '../API/produits/?format=json&quantite__gte=1',
         type: 'GET',
         dataType: 'json',
         success: function (response) {
