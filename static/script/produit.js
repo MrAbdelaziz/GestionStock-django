@@ -1,4 +1,22 @@
+MyTools = {
+    Validation: function () {
+        var inputs = ["reference", "designation", "prix", "quantite", "fournisseur"];
+        var checked = true;
+
+        inputs.forEach(function (input) {
+            var element = $("#" + input);
+            if (element.val() == null || element.val() == "") {
+                alert(input + " is empty");
+                checked = false;
+
+            }
+
+        });
+        return checked;
+    }
+}
 $(document).ready(function () {
+
 
     table = $('#tproduit').DataTable({
         ajax: {
@@ -39,94 +57,97 @@ $(document).ready(function () {
     });
 
 
-$('#btnref').click(function () {
-    table.ajax.reload();
-});
-
-
-
-      $('#btnrisk').click(function () {
-            var risk = $("#risk");
-              $('#tproduit').dataTable().fnDestroy();
-
-              table2 = $('#tproduit').DataTable({
-        ajax: {
-            url: "../API/produits/?format=json&quantite__gte="+risk.val(),
-            dataSrc: ''
-        },
-        columns: [
-            {
-                data: "id"
-            },
-            {
-                data: "reference"
-            },
-            {
-                data: "designation"
-            },
-            {
-                data: "prixU"
-            },
-            {
-                data: "quantite"
-            },
-            {
-                //     url  -> four
-                data: "fournisseur"
-            },
-            {
-                "render": function () {
-                    return '<button type="button" class="btn btn-outline-danger supprimer">Supprimer</button>';
-                }
-            },
-            {
-                "render": function () {
-                    return '<button type="button" class="btn btn-outline-secondary modifier">Modifier</button>';
-                }
-            }]
-
+    $('#btnref').click(function () {
+        table.ajax.reload();
     });
-            table2.ajax.reload();
+
+
+    $('#btnrisk').click(function () {
+        var risk = $("#risk");
+        $('#tproduit').dataTable().fnDestroy();
+
+        table2 = $('#tproduit').DataTable({
+            ajax: {
+                url: "../API/produits/?format=json&quantite__gte=" + risk.val(),
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: "id"
+                },
+                {
+                    data: "reference"
+                },
+                {
+                    data: "designation"
+                },
+                {
+                    data: "prixU"
+                },
+                {
+                    data: "quantite"
+                },
+                {
+                    //     url  -> four
+                    data: "fournisseur"
+                },
+                {
+                    "render": function () {
+                        return '<button type="button" class="btn btn-outline-danger supprimer">Supprimer</button>';
+                    }
+                },
+                {
+                    "render": function () {
+                        return '<button type="button" class="btn btn-outline-secondary modifier">Modifier</button>';
+                    }
+                }]
+
         });
+        table2.ajax.reload();
+    });
 
     $('#btn').click(
         function () {
-            var reference = $("#reference"); // var code  = document.getElementById("code");
-            var designation = $("#designation");
-            var prix = $("#prix");
-            var quantite = $("#quantite");
-            var fournisseur = $("#fournisseur");
 
-            if ($('#btn').text() == 'Ajouter') {
-                var p = {
-                    reference: reference.val(), //code.value
-                    designation: designation.val(),
-                    prixU: prix.val(),
-                    quantite: quantite.val(),
-                    fournisseur: fournisseur.val(),
-                };
-                console.log(JSON.stringify(p));
+                var reference = $("#reference"); // var code  = document.getElementById("code");
+                var designation = $("#designation");
+                var prix = $("#prix");
+                var quantite = $("#quantite");
+                var fournisseur = $("#fournisseur");
 
-                $.ajax({
-                    url: '../API/produits/',
-                    contentType: "application/json",
-                    dataType: "json",
-                    data: JSON.stringify(p),
-                    type: 'POST',
-                    async: false,
-                    success: function (data, textStatus,
-                                       jqXHR) {
-                        table.ajax.reload();
-                    },
-                    error: function (jqXHR, textStatus,
-                                     errorThrown) {
-                        console.log("erorr ");
-                    }
-                });
+                if ($('#btn').text() == 'Ajouter') {
+                    if (MyTools.Validation()) {
+                    var p = {
+                        reference: reference.val(), //code.value
+                        designation: designation.val(),
+                        prixU: prix.val(),
+                        quantite: quantite.val(),
+                        fournisseur: fournisseur.val(),
+                    };
+                    console.log(JSON.stringify(p));
 
-                $("#main-content").load(
-                    "../admindash/produits");
-            }
+                    $.ajax({
+                        url: '../API/produits/',
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify(p),
+                        type: 'POST',
+                        async: false,
+                        success: function (data, textStatus,
+                                           jqXHR) {
+                            table.ajax.reload();
+                        },
+                        error: function (jqXHR, textStatus,
+                                         errorThrown) {
+                            console.log("erorr ");
+                        }
+                    });
+
+                    $("#main-content").load(
+                        "../admindash/produits");
+                }
+                }
+
         });
 
     $('#table-content')
@@ -170,8 +191,8 @@ $('#btnref').click(function () {
                                         textStatus,
                                         jqXHR) {
 
-                                            table.ajax
-                                                .reload();
+                                        table.ajax
+                                            .reload();
 
                                     },
                                     error: function (
@@ -200,7 +221,7 @@ $('#btnref').click(function () {
                 1).text();
             var designation = $(this).closest('tr').find('td')
                 .eq(2).text();
-            var prix =parseInt( $(this).closest('tr').find('td')
+            var prix = parseInt($(this).closest('tr').find('td')
                 .eq(3).text());
             var quantite = $(this).closest('tr').find('td')
                 .eq(4).text();
@@ -224,30 +245,32 @@ $('#btnref').click(function () {
                     fournisseur: $("#fournisseur").val()
                 };
                 if ($('#btn').text() == 'Modifier') {
-                    $.ajax({
-                        url: '../API/produits/'+id+'/',
-                        contentType: "application/json",
-                        dataType: "json",
-                        data: JSON.stringify(p),
-                        type: 'PUT',
-                        async: false,
-                        success: function (data,
-                                           textStatus, jqXHR) {
-                            table.ajax.reload();
-                            $("#reference").val('');
-                            $("#designation").val('');
-                            $("#prix").val('');
-                            $("#quantite").val('');
-                            $("#fournisseur").val('');
-                            btn.text('Ajouter');
-                        },
-                        error: function (jqXHR, textStatus,
-                                         errorThrown) {
-                            console.log(textStatus);
-                        }
-                    });
-                    $("#main-content").load(
-                        "../admindash/produits");
+                    if (MyTools.Validation()) {
+                        $.ajax({
+                            url: '../API/produits/' + id + '/',
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: JSON.stringify(p),
+                            type: 'PUT',
+                            async: false,
+                            success: function (data,
+                                               textStatus, jqXHR) {
+                                table.ajax.reload();
+                                $("#reference").val('');
+                                $("#designation").val('');
+                                $("#prix").val('');
+                                $("#quantite").val('');
+                                $("#fournisseur").val('');
+                                btn.text('Ajouter');
+                            },
+                            error: function (jqXHR, textStatus,
+                                             errorThrown) {
+                                console.log(textStatus);
+                            }
+                        });
+                        $("#main-content").load(
+                            "../admindash/produits");
+                    }
                 }
             });
         });
