@@ -79,7 +79,7 @@ $(document).ready(function () {
 
         table2 = $('#tproduit').DataTable({
             ajax: {
-                url: "../API/produits/?format=json&quantite__gte=" + risk.val(),
+                url: "../API/produits/?format=json&quantite__lte=" + risk.val(),
                 dataSrc: ''
             },
             columns: [
