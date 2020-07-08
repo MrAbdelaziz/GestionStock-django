@@ -121,7 +121,7 @@ $(document).ready(function () {
 
                             }
                         } else {
-                            alert('la quantité demandée depasse la quantité de stock');
+                            alert('la quantité demandée depasse la quantité de stock ('+p.quantite+')');
                         }
 
                     },
