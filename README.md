@@ -42,4 +42,3 @@ REST API
 
 ## social media :
 - iG: https://www.instagram.com/_.abdelaziz._/
-- linkedin: https://www.linkedin.com/in/abdelazizelouahab/
